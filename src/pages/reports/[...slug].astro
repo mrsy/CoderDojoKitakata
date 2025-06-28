@@ -1,0 +1,72 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const reports = await getCollection('reports');
+  return reports.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+type Props = {
+  entry: CollectionEntry<'reports'>;
+};
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Layout title={`${entry.data.title} | CoderDojo喜多方`} description={entry.data.description}>
+  <Header />
+  
+  <main>
+    <article class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <header class="mb-4">
+              <h1 class="display-5 fw-bold mb-3">{entry.data.title}</h1>
+              <div class="text-muted mb-3">
+                <i class="fas fa-calendar me-2"></i>{entry.data.date}
+                {entry.data.author && (
+                  <>
+                    <span class="mx-2">•</span>
+                    <i class="fas fa-user me-2"></i>{entry.data.author}
+                  </>
+                )}
+              </div>
+              {entry.data.description && (
+                <p class="lead">{entry.data.description}</p>
+              )}
+            </header>
+            
+            <div class="content">
+              <Content />
+            </div>
+            
+            <footer class="mt-5 pt-4 border-top">
+              <div class="row">
+                <div class="col-md-6">
+                  <a href="/reports" class="btn btn-outline-primary">
+                    <i class="fas fa-arrow-left me-2"></i>レポート一覧に戻る
+                  </a>
+                </div>
+                <div class="col-md-6 text-md-end">
+                  <a href="/" class="btn btn-primary">
+                    <i class="fas fa-home me-2"></i>ホームに戻る
+                  </a>
+                </div>
+              </div>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+  
+  <Footer />
+</Layout>

@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="概要 | CoderDojo喜多方">
+  <Header />
+  
+  <main>
+    <section class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h1 class="display-5 fw-bold mb-4">CoderDojo喜多方について</h1>
+            
+            <div class="card mb-4">
+              <div class="card-body">
+                <h3 class="card-title">CoderDojoとは</h3>
+                <p class="card-text">
+                  CoderDojoは、7〜17歳の子どもを対象にしたプログラミング道場です。
+                  2011年にアイルランドで始まり、世界各国で開催されています。
+                </p>
+              </div>
+            </div>
+
+            <div class="card mb-4">
+              <div class="card-body">
+                <h3 class="card-title">CoderDojo喜多方の特徴</h3>
+                <ul class="list-unstyled">
+                  <li class="mb-2"><i class="fas fa-check text-success me-2"></i>参加費無料</li>
+                  <li class="mb-2"><i class="fas fa-check text-success me-2"></i>子どもたちの自主性を重視</li>
+                  <li class="mb-2"><i class="fas fa-check text-success me-2"></i>様々なプログラミング言語・ツールに対応</li>
+                  <li class="mb-2"><i class="fas fa-check text-success me-2"></i>地域のボランティアによる運営</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="card mb-4">
+              <div class="card-body">
+                <h3 class="card-title">対象年齢・持ち物</h3>
+                <p class="card-text">
+                  <strong>対象年齢:</strong> 7歳〜17歳<br>
+                  <strong>持ち物:</strong> ノートパソコン（貸出可能な場合もあります）
+                </p>
+              </div>
+            </div>
+
+            <div class="card mb-4">
+              <div class="card-body">
+                <h3 class="card-title">学べる内容</h3>
+                <div class="row">
+                  <div class="col-md-6">
+                    <ul class="list-unstyled">
+                      <li class="mb-2"><i class="fas fa-code text-primary me-2"></i>Scratch</li>
+                      <li class="mb-2"><i class="fas fa-code text-primary me-2"></i>HTML/CSS</li>
+                      <li class="mb-2"><i class="fas fa-code text-primary me-2"></i>JavaScript</li>
+                    </ul>
+                  </div>
+                  <div class="col-md-6">
+                    <ul class="list-unstyled">
+                      <li class="mb-2"><i class="fas fa-code text-primary me-2"></i>Python</li>
+                      <li class="mb-2"><i class="fas fa-code text-primary me-2"></i>Unity</li>
+                      <li class="mb-2"><i class="fas fa-code text-primary me-2"></i>micro:bit</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-center">
+              <a href="/contact" class="btn btn-primary btn-lg">
+                <i class="fas fa-envelope me-2"></i>お問い合わせ
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

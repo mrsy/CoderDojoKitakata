@@ -1,0 +1,115 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import EventCard from '../components/EventCard.astro';
+import SponsorSection from '../components/SponsorSection.astro';
+import CoderDojoLinks from '../components/CoderDojoLinks.astro';
+import { getCollection } from 'astro:content';
+
+// Get latest reports
+const reports = await getCollection('reports');
+const sortedReports = reports.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+const latestReport = sortedReports[0];
+---
+
+<Layout title="CoderDojo喜多方 | 福島県喜多方市の非営利プログラミングクラブ">
+  <Header />
+  
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section bg-gradient-primary text-white py-5">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-8">
+            <h1 class="display-4 fw-bold mb-4">CoderDojo喜多方</h1>
+            <p class="lead mb-4">
+              福島県喜多方市で毎月開催中の「非営利プログラミングクラブ」です。<br>
+              開催予定やレポートを掲載中。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Next Event Section -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="text-center mb-4">
+              <h2 class="display-6 fw-bold text-primary">次回開催</h2>
+            </div>
+            <EventCard 
+              title="第70回CoderDojo喜多方"
+              date="2025年7月12日（土）"
+              time="9:30〜11:30"
+              registrationUrl="https://coderdojo-kitakata.doorkeeper.jp/events/185682"
+              isUpcoming={true}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Report Section -->
+    {latestReport && (
+      <section class="py-5 bg-light">
+        <div class="container">
+          <div class="text-center mb-4">
+            <h2 class="fw-bold">最新の開催レポート</h2>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">{latestReport.data.title}</h5>
+                  <p class="card-text text-muted">
+                    <i class="fas fa-calendar me-2"></i>{latestReport.data.date}
+                  </p>
+                  <p class="card-text">{latestReport.data.description}</p>
+                  <a href={`/reports/${latestReport.slug}`} class="btn btn-outline-primary">
+                    レポートを読む <i class="fas fa-arrow-right ms-2"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- About Section -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <h2 class="fw-bold mb-4">今後の開催予定</h2>
+            <p class="lead mb-4">
+              メンター(子ども達のプログラミングサポート役)や運営ボランティアも募集中です。<br>
+              プログラミングの経験が無い方でも大丈夫。子ども達と一緒にプログラミングに触れて楽しみましょう!
+            </p>
+            
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">開催場所</h5>
+                <p class="card-text">当面はいろんなところでやります。HPでお知らせします。</p>
+                <p class="card-text">
+                  <i class="fas fa-phone me-2"></i>TEL. 090-5198-7538
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sponsors Section -->
+    <SponsorSection />
+
+    <!-- Other CoderDojo Links -->
+    <CoderDojoLinks />
+  </main>
+  
+  <Footer />
+</Layout>

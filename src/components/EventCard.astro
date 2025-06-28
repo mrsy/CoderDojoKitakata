@@ -1,0 +1,33 @@
+---
+export interface Props {
+  title: string;
+  date: string;
+  time: string;
+  registrationUrl?: string;
+  isUpcoming?: boolean;
+}
+
+const { title, date, time, registrationUrl, isUpcoming = false } = Astro.props;
+---
+
+<div class={`card h-100 ${isUpcoming ? 'border-primary' : ''}`}>
+  {isUpcoming && (
+    <div class="card-header bg-primary text-white">
+      <h6 class="mb-0">
+        <i class="fas fa-calendar-alt me-2"></i>次回開催
+      </h6>
+    </div>
+  )}
+  <div class="card-body">
+    <h5 class="card-title">{title}</h5>
+    <p class="card-text">
+      <i class="fas fa-calendar me-2"></i>{date}<br>
+      <i class="fas fa-clock me-2"></i>{time}
+    </p>
+    {registrationUrl && (
+      <a href={registrationUrl} class="btn btn-primary" target="_blank" rel="noopener">
+        <i class="fas fa-external-link-alt me-2"></i>お申し込み
+      </a>
+    )}
+  </div>
+</div>

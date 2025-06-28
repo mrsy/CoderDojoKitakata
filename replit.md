@@ -77,6 +77,8 @@ This project is a static website for CoderDojo Kitakata (CoderDojo喜多方), a 
 ```
 Changelog:
 - June 28, 2025. Initial setup
+- June 28, 2025. Added reports listing page with pagination (10 items per page)
+- June 28, 2025. Fixed Vite configuration for Replit hosting compatibility
 ```
 
 ## User Preferences

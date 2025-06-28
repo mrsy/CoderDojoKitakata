@@ -1,0 +1,230 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+// Get all reports and sort by date (newest first)
+const allReports = await getCollection('reports');
+const sortedReports = allReports.sort((a, b) => 
+  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+// Pagination logic
+const currentPage = Number(Astro.url.searchParams.get('page') || '1');
+const reportsPerPage = 10;
+const totalReports = sortedReports.length;
+const totalPages = Math.ceil(totalReports / reportsPerPage);
+
+const startIndex = (currentPage - 1) * reportsPerPage;
+const endIndex = startIndex + reportsPerPage;
+const currentReports = sortedReports.slice(startIndex, endIndex);
+
+// Generate pagination URLs
+const prevPage = currentPage > 1 ? currentPage - 1 : null;
+const nextPage = currentPage < totalPages ? currentPage + 1 : null;
+
+// Generate page numbers for pagination
+const pageNumbers = [];
+for (let i = 1; i <= totalPages; i++) {
+  if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
+    pageNumbers.push(i);
+  } else if (i === currentPage - 3 || i === currentPage + 3) {
+    pageNumbers.push('...');
+  }
+}
+---
+
+<Layout title="開催レポート | CoderDojo喜多方" description="CoderDojo喜多方の過去の開催レポート一覧です。">
+  <Header />
+  
+  <main>
+    <section class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <div class="text-center mb-5">
+              <h1 class="display-5 fw-bold mb-3">開催レポート</h1>
+              <p class="lead text-muted">
+                CoderDojo喜多方の活動記録をご覧いただけます
+              </p>
+            </div>
+
+            {currentReports.length === 0 ? (
+              <div class="text-center py-5">
+                <div class="card">
+                  <div class="card-body">
+                    <h3 class="card-title text-muted">レポートがありません</h3>
+                    <p class="card-text">開催レポートが見つかりませんでした。</p>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <>
+                <!-- Reports List -->
+                <div class="row g-4 mb-5">
+                  {currentReports.map((report) => (
+                    <div class="col-lg-6">
+                      <article class="card h-100">
+                        <div class="card-body">
+                          <div class="d-flex justify-content-between align-items-start mb-2">
+                            <div class="text-muted small">
+                              <i class="fas fa-calendar me-1"></i>
+                              {new Date(report.data.date).toLocaleDateString('ja-JP', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric'
+                              })}
+                            </div>
+                            {report.data.tags && report.data.tags.length > 0 && (
+                              <div class="d-flex flex-wrap gap-1">
+                                {report.data.tags.slice(0, 2).map((tag) => (
+                                  <span class="badge bg-secondary">{tag}</span>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                          
+                          <h3 class="card-title h5">
+                            <a href={`/reports/${report.slug}`} class="text-decoration-none">
+                              {report.data.title}
+                            </a>
+                          </h3>
+                          
+                          {report.data.description && (
+                            <p class="card-text text-muted">
+                              {report.data.description}
+                            </p>
+                          )}
+                          
+                          {report.data.author && (
+                            <div class="text-muted small mb-3">
+                              <i class="fas fa-user me-1"></i>
+                              {report.data.author}
+                            </div>
+                          )}
+                          
+                          <a href={`/reports/${report.slug}`} class="btn btn-outline-primary">
+                            レポートを読む <i class="fas fa-arrow-right ms-1"></i>
+                          </a>
+                        </div>
+                      </article>
+                    </div>
+                  ))}
+                </div>
+
+                <!-- Pagination -->
+                {totalPages > 1 && (
+                  <nav aria-label="レポートページネーション">
+                    <ul class="pagination justify-content-center">
+                      <!-- Previous Button -->
+                      <li class={`page-item ${!prevPage ? 'disabled' : ''}`}>
+                        {prevPage ? (
+                          <a class="page-link" href={`/reports?page=${prevPage}`} aria-label="前のページ">
+                            <i class="fas fa-chevron-left"></i>
+                          </a>
+                        ) : (
+                          <span class="page-link" aria-label="前のページ">
+                            <i class="fas fa-chevron-left"></i>
+                          </span>
+                        )}
+                      </li>
+
+                      <!-- Page Numbers -->
+                      {pageNumbers.map((pageNum) => {
+                        if (pageNum === '...') {
+                          return (
+                            <li class="page-item disabled">
+                              <span class="page-link">...</span>
+                            </li>
+                          );
+                        }
+                        
+                        const isCurrentPage = pageNum === currentPage;
+                        return (
+                          <li class={`page-item ${isCurrentPage ? 'active' : ''}`}>
+                            {isCurrentPage ? (
+                              <span class="page-link" aria-current="page">
+                                {pageNum}
+                                <span class="visually-hidden">(現在のページ)</span>
+                              </span>
+                            ) : (
+                              <a class="page-link" href={`/reports?page=${pageNum}`}>
+                                {pageNum}
+                              </a>
+                            )}
+                          </li>
+                        );
+                      })}
+
+                      <!-- Next Button -->
+                      <li class={`page-item ${!nextPage ? 'disabled' : ''}`}>
+                        {nextPage ? (
+                          <a class="page-link" href={`/reports?page=${nextPage}`} aria-label="次のページ">
+                            <i class="fas fa-chevron-right"></i>
+                          </a>
+                        ) : (
+                          <span class="page-link" aria-label="次のページ">
+                            <i class="fas fa-chevron-right"></i>
+                          </span>
+                        )}
+                      </li>
+                    </ul>
+                  </nav>
+                )}
+
+                <!-- Page Info -->
+                <div class="text-center text-muted small mt-3">
+                  {totalReports}件中 {startIndex + 1}-{Math.min(endIndex, totalReports)}件を表示
+                  {totalPages > 1 && (
+                    <span class="mx-2">•</span>
+                    <span>{currentPage}/{totalPages}ページ</span>
+                  )}
+                </div>
+              </>
+            )}
+
+            <!-- Back to Home -->
+            <div class="text-center mt-5">
+              <a href="/" class="btn btn-primary">
+                <i class="fas fa-home me-2"></i>ホームに戻る
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<style>
+.pagination .page-link {
+  color: var(--primary-color);
+  border-color: #dee2e6;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.pagination .page-link:hover {
+  background-color: rgba(0, 123, 255, 0.1);
+  border-color: var(--primary-color);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.card-title a:hover {
+  color: var(--primary-color) !important;
+}
+
+.badge {
+  font-size: 0.75em;
+}
+</style>

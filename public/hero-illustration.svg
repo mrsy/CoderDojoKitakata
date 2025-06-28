@@ -1,0 +1,257 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e3f2fd;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#bbdefb;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="screenGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#64b5f6;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#2196f3;stop-opacity:0.6" />
+    </linearGradient>
+    
+    <linearGradient id="thoughtBubble" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fff3e0;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#ffe0b2;stop-opacity:0.9" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#skyGradient)"/>
+  
+  <!-- Desk surface -->
+  <rect x="0" y="320" width="800" height="80" fill="#8d6e63" opacity="0.3"/>
+  
+  <!-- Child 1 (left) -->
+  <g transform="translate(100, 180)">
+    <!-- Chair -->
+    <rect x="40" y="80" width="60" height="15" rx="5" fill="#795548"/>
+    <rect x="50" y="95" width="8" height="40" fill="#5d4037"/>
+    <rect x="82" y="95" width="8" height="40" fill="#5d4037"/>
+    
+    <!-- Body -->
+    <ellipse cx="70" cy="60" rx="25" ry="35" fill="#ffcc80"/>
+    
+    <!-- Head -->
+    <circle cx="70" cy="25" r="18" fill="#ffcc80"/>
+    
+    <!-- Hair -->
+    <path d="M 52 15 Q 70 5 88 15 Q 85 25 82 35 Q 70 30 58 35 Q 55 25 52 15" fill="#6d4c41"/>
+    
+    <!-- Eyes -->
+    <circle cx="65" cy="22" r="2" fill="#333"/>
+    <circle cx="75" cy="22" r="2" fill="#333"/>
+    
+    <!-- Smile -->
+    <path d="M 62 28 Q 70 32 78 28" stroke="#333" stroke-width="1.5" fill="none"/>
+    
+    <!-- Arms -->
+    <ellipse cx="50" cy="45" rx="8" ry="20" fill="#ffcc80" transform="rotate(-20 50 45)"/>
+    <ellipse cx="90" cy="45" rx="8" ry="20" fill="#ffcc80" transform="rotate(20 90 45)"/>
+    
+    <!-- Hands on keyboard -->
+    <circle cx="45" cy="55" r="5" fill="#ffcc80"/>
+    <circle cx="95" cy="55" r="5" fill="#ffcc80"/>
+  </g>
+  
+  <!-- Laptop 1 -->
+  <g transform="translate(120, 220)">
+    <!-- Laptop base -->
+    <rect x="0" y="20" width="80" height="50" rx="5" fill="#37474f"/>
+    
+    <!-- Screen -->
+    <rect x="5" y="0" width="70" height="45" rx="3" fill="#263238"/>
+    <rect x="10" y="5" width="60" height="35" rx="2" fill="url(#screenGlow)"/>
+    
+    <!-- Code on screen -->
+    <rect x="15" y="10" width="20" height="2" fill="#81c784"/>
+    <rect x="15" y="15" width="35" height="2" fill="#fff"/>
+    <rect x="15" y="20" width="25" height="2" fill="#ffb74d"/>
+    <rect x="15" y="25" width="40" height="2" fill="#fff"/>
+    <rect x="15" y="30" width="15" height="2" fill="#f48fb1"/>
+    
+    <!-- Keyboard -->
+    <rect x="10" y="35" width="60" height="25" rx="2" fill="#455a64"/>
+    <!-- Keys -->
+    <g fill="#607d8b">
+      <rect x="15" y="40" width="4" height="3" rx="0.5"/>
+      <rect x="20" y="40" width="4" height="3" rx="0.5"/>
+      <rect x="25" y="40" width="4" height="3" rx="0.5"/>
+      <rect x="30" y="40" width="4" height="3" rx="0.5"/>
+      <rect x="35" y="40" width="4" height="3" rx="0.5"/>
+      <rect x="40" y="40" width="4" height="3" rx="0.5"/>
+      <rect x="45" y="40" width="4" height="3" rx="0.5"/>
+      <rect x="50" y="40" width="4" height="3" rx="0.5"/>
+      <rect x="55" y="40" width="4" height="3" rx="0.5"/>
+      <rect x="60" y="40" width="4" height="3" rx="0.5"/>
+    </g>
+  </g>
+  
+  <!-- Child 2 (center) -->
+  <g transform="translate(350, 170)">
+    <!-- Chair -->
+    <rect x="40" y="90" width="60" height="15" rx="5" fill="#795548"/>
+    <rect x="50" y="105" width="8" height="40" fill="#5d4037"/>
+    <rect x="82" y="105" width="8" height="40" fill="#5d4037"/>
+    
+    <!-- Body -->
+    <ellipse cx="70" cy="70" rx="25" ry="35" fill="#ffcc80"/>
+    
+    <!-- Head -->
+    <circle cx="70" cy="35" r="18" fill="#ffcc80"/>
+    
+    <!-- Hair (longer) -->
+    <path d="M 52 20 Q 70 10 88 20 Q 85 30 82 40 Q 70 35 58 40 Q 55 30 52 20" fill="#3e2723"/>
+    
+    <!-- Eyes -->
+    <circle cx="65" cy="32" r="2" fill="#333"/>
+    <circle cx="75" cy="32" r="2" fill="#333"/>
+    
+    <!-- Smile -->
+    <path d="M 62 38 Q 70 42 78 38" stroke="#333" stroke-width="1.5" fill="none"/>
+    
+    <!-- Arms -->
+    <ellipse cx="50" cy="55" rx="8" ry="20" fill="#ffcc80" transform="rotate(-15 50 55)"/>
+    <ellipse cx="90" cy="55" rx="8" ry="20" fill="#ffcc80" transform="rotate(15 90 55)"/>
+    
+    <!-- Hands -->
+    <circle cx="50" cy="65" r="5" fill="#ffcc80"/>
+    <circle cx="90" cy="65" r="5" fill="#ffcc80"/>
+  </g>
+  
+  <!-- Desktop computer -->
+  <g transform="translate(370, 230)">
+    <!-- Monitor -->
+    <rect x="0" y="0" width="80" height="60" rx="5" fill="#37474f"/>
+    <rect x="5" y="5" width="70" height="45" rx="2" fill="url(#screenGlow)"/>
+    
+    <!-- Game/App on screen -->
+    <circle cx="25" cy="20" r="6" fill="#f44336"/>
+    <circle cx="40" cy="25" r="8" fill="#4caf50"/>
+    <circle cx="55" cy="18" r="5" fill="#ffeb3b"/>
+    <rect x="20" y="35" width="40" height="3" fill="#fff"/>
+    <rect x="25" y="40" width="30" height="2" fill="#81c784"/>
+    
+    <!-- Monitor stand -->
+    <rect x="35" y="60" width="10" height="15" fill="#455a64"/>
+    <rect x="25" y="75" width="30" height="5" rx="2" fill="#455a64"/>
+    
+    <!-- Keyboard -->
+    <rect x="10" y="85" width="60" height="15" rx="2" fill="#607d8b"/>
+    
+    <!-- Mouse -->
+    <ellipse cx="75" cy="92" rx="4" ry="6" fill="#607d8b"/>
+  </g>
+  
+  <!-- Child 3 (right) -->
+  <g transform="translate(600, 175)">
+    <!-- Chair -->
+    <rect x="40" y="85" width="60" height="15" rx="5" fill="#795548"/>
+    <rect x="50" y="100" width="8" height="40" fill="#5d4037"/>
+    <rect x="82" y="100" width="8" height="40" fill="#5d4037"/>
+    
+    <!-- Body -->
+    <ellipse cx="70" cy="65" rx="25" ry="35" fill="#ffcc80"/>
+    
+    <!-- Head -->
+    <circle cx="70" cy="30" r="18" fill="#ffcc80"/>
+    
+    <!-- Hair (curly) -->
+    <circle cx="60" cy="20" r="6" fill="#8d6e63"/>
+    <circle cx="70" cy="15" r="7" fill="#8d6e63"/>
+    <circle cx="80" cy="20" r="6" fill="#8d6e63"/>
+    <circle cx="65" cy="25" r="5" fill="#8d6e63"/>
+    <circle cx="75" cy="25" r="5" fill="#8d6e63"/>
+    
+    <!-- Eyes -->
+    <circle cx="65" cy="27" r="2" fill="#333"/>
+    <circle cx="75" cy="27" r="2" fill="#333"/>
+    
+    <!-- Smile -->
+    <path d="M 62 33 Q 70 37 78 33" stroke="#333" stroke-width="1.5" fill="none"/>
+    
+    <!-- Arms -->
+    <ellipse cx="50" cy="50" rx="8" ry="20" fill="#ffcc80" transform="rotate(-10 50 50)"/>
+    <ellipse cx="90" cy="50" rx="8" ry="20" fill="#ffcc80" transform="rotate(10 90 50)"/>
+  </g>
+  
+  <!-- Tablet -->
+  <g transform="translate(620, 240)">
+    <rect x="0" y="0" width="60" height="40" rx="5" fill="#37474f"/>
+    <rect x="3" y="3" width="54" height="34" rx="2" fill="url(#screenGlow)"/>
+    
+    <!-- Drawing app -->
+    <circle cx="20" cy="15" r="3" fill="#e91e63"/>
+    <path d="M 25 20 Q 35 15 40 25" stroke="#4caf50" stroke-width="2" fill="none"/>
+    <rect x="45" y="10" width="8" height="8" fill="#ff9800"/>
+    <circle cx="30" cy="30" r="4" fill="#9c27b0"/>
+  </g>
+  
+  <!-- Thought bubbles with imagination -->
+  
+  <!-- Thought bubble 1 (rocket) -->
+  <g transform="translate(180, 80)">
+    <circle cx="0" cy="20" r="3" fill="white" opacity="0.8"/>
+    <circle cx="10" cy="10" r="5" fill="white" opacity="0.9"/>
+    <ellipse cx="25" cy="0" rx="20" ry="15" fill="url(#thoughtBubble)" stroke="#ffc107" stroke-width="1"/>
+    
+    <!-- Rocket -->
+    <g transform="translate(15, -10)">
+      <ellipse cx="10" cy="5" rx="3" ry="8" fill="#f44336"/>
+      <polygon points="7,13 10,18 13,13" fill="#ff9800"/>
+      <circle cx="10" cy="2" r="2" fill="#fff"/>
+      <rect x="8" y="8" width="4" height="2" fill="#2196f3"/>
+    </g>
+  </g>
+  
+  <!-- Thought bubble 2 (robot) -->
+  <g transform="translate(420, 60)">
+    <circle cx="0" cy="25" r="3" fill="white" opacity="0.8"/>
+    <circle cx="8" cy="15" r="4" fill="white" opacity="0.9"/>
+    <ellipse cx="20" cy="0" rx="25" ry="18" fill="url(#thoughtBubble)" stroke="#4caf50" stroke-width="1"/>
+    
+    <!-- Robot -->
+    <g transform="translate(8, -12)">
+      <rect x="8" y="8" width="8" height="10" rx="1" fill="#607d8b"/>
+      <rect x="6" y="6" width="12" height="8" rx="2" fill="#90a4ae"/>
+      <circle cx="9" cy="9" r="1" fill="#f44336"/>
+      <circle cx="15" cy="9" r="1" fill="#f44336"/>
+      <rect x="10" y="12" width="4" height="1" fill="#333"/>
+      <rect x="5" y="10" width="2" height="4" fill="#607d8b"/>
+      <rect x="17" y="10" width="2" height="4" fill="#607d8b"/>
+    </g>
+  </g>
+  
+  <!-- Thought bubble 3 (game) -->
+  <g transform="translate(680, 70)">
+    <circle cx="0" cy="20" r="2" fill="white" opacity="0.8"/>
+    <circle cx="6" cy="12" r="4" fill="white" opacity="0.9"/>
+    <ellipse cx="18" cy="0" rx="22" ry="16" fill="url(#thoughtBubble)" stroke="#e91e63" stroke-width="1"/>
+    
+    <!-- Game character -->
+    <g transform="translate(8, -10)">
+      <circle cx="10" cy="8" r="4" fill="#ffeb3b"/>
+      <circle cx="8" cy="6" r="1" fill="#333"/>
+      <circle cx="12" cy="6" r="1" fill="#333"/>
+      <path d="M 7 10 Q 10 12 13 10" stroke="#333" stroke-width="1" fill="none"/>
+      <rect x="6" y="12" width="8" height="6" fill="#4caf50"/>
+    </g>
+  </g>
+  
+  <!-- Floating code elements -->
+  <g fill="#2196f3" opacity="0.3">
+    <text x="50" y="50" font-family="monospace" font-size="12">&lt;/&gt;</text>
+    <text x="300" y="40" font-family="monospace" font-size="10">{ }</text>
+    <text x="500" y="55" font-family="monospace" font-size="11">if</text>
+    <text x="720" y="45" font-family="monospace" font-size="9">function</text>
+  </g>
+  
+  <!-- Sparkles for magic -->
+  <g fill="#ffc107" opacity="0.7">
+    <polygon points="150,120 152,125 157,125 153,128 155,133 150,130 145,133 147,128 143,125 148,125" transform="scale(0.5)"/>
+    <polygon points="450,100 452,105 457,105 453,108 455,113 450,110 445,113 447,108 443,105 448,105" transform="scale(0.6)"/>
+    <polygon points="650,110 652,115 657,115 653,118 655,123 650,120 645,123 647,118 643,115 648,115" transform="scale(0.4)"/>
+    <polygon points="250,150 252,155 257,155 253,158 255,163 250,160 245,163 247,158 243,155 248,155" transform="scale(0.3)"/>
+  </g>
+</svg>

@@ -26,6 +26,7 @@ body {
   background: linear-gradient(135deg, var(--primary-color) 0%, #0056b3 100%);
   position: relative;
   overflow: hidden;
+  min-height: 500px;
 }
 
 .hero-section::before {
@@ -42,6 +43,27 @@ body {
 .hero-section .container {
   position: relative;
   z-index: 1;
+}
+
+/* Hero Illustration */
+.hero-illustration {
+  text-align: center;
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero-illustration img {
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 /* Background Gradients */
